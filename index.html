@@ -46,14 +46,14 @@
     z-index: 0;
   }
 
-  /* Lighter vignette — pattern stays crisp in the center */
+  /* Dark vignette so type sits cleanly — echoes palarchive treatment */
   .hero::after {
     content: "";
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse at center, rgba(20, 40, 28, 0.12) 25%, rgba(20, 40, 28, 0.55) 95%),
-      linear-gradient(180deg, rgba(20, 40, 28, 0.28) 0%, rgba(20, 40, 28, 0.10) 45%, rgba(20, 40, 28, 0.40) 100%);
+      radial-gradient(ellipse at center, rgba(20, 40, 28, 0.35) 0%, rgba(20, 40, 28, 0.78) 85%),
+      linear-gradient(180deg, rgba(20, 40, 28, 0.55) 0%, rgba(20, 40, 28, 0.35) 50%, rgba(20, 40, 28, 0.7) 100%);
   }
 
   /* ─── Frame border — soft light outline like palarchive ────── */
