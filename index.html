@@ -46,14 +46,14 @@
     z-index: 0;
   }
 
-  /* Dark vignette so type sits cleanly — echoes palarchive treatment */
+  /* Lighter vignette — pattern stays crisp in the center */
   .hero::after {
     content: "";
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse at center, rgba(20, 40, 28, 0.35) 0%, rgba(20, 40, 28, 0.78) 85%),
-      linear-gradient(180deg, rgba(20, 40, 28, 0.55) 0%, rgba(20, 40, 28, 0.35) 50%, rgba(20, 40, 28, 0.7) 100%);
+      radial-gradient(ellipse at center, rgba(20, 40, 28, 0.12) 25%, rgba(20, 40, 28, 0.55) 95%),
+      linear-gradient(180deg, rgba(20, 40, 28, 0.28) 0%, rgba(20, 40, 28, 0.10) 45%, rgba(20, 40, 28, 0.40) 100%);
   }
 
   /* ─── Frame border — soft light outline like palarchive ────── */
@@ -240,10 +240,10 @@
   </div>
 
   <main class="stage">
-    <div class="eyebrow">Lietuvių Atmintis · Lithuanian Memory</div>
+    <div class="eyebrow">Lietuvių Tautos Atmintis · Lithuanian Memory</div>
     <h1>Lietuva.AI</h1>
     <p class="tagline">Infrastructure for Lithuanian cultural memory.</p>
-    <p class="tagline">Lietuvių kultūros atminties infrastruktūra.</p>
+    <p class="tagline">Lietuvių tautos atminties infrastruktūra.</p>
   </main>
 
   <nav class="enter" aria-label="Enter the archive">
