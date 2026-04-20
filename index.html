@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lietuva.AI — Lithuanian Cultural Memory Archive</title>
+<meta name="description" content="Lietuva.AI — a cultural memory archive for the Lithuanian diaspora. A CultureNet pilot." />
+<link rel="icon" type="image/png" href="favicon.png" />
+<meta property="og:title" content="Lietuva.AI" />
+<meta property="og:description" content="Lithuanian Cultural Memory Archive. A CultureNet pilot." />
+<meta property="og:image" content="/hero.jpg" />
+<meta name="theme-color" content="#1F3A28" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --ink: #FFFFFF;
+    --ink-soft: rgba(255, 255, 255, 0.78);
+    --ink-faint: rgba(255, 255, 255, 0.55);
+    --rule: rgba(255, 255, 255, 0.35);
+    --gold: #D4B15C;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background: #1F3A28;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ─── Hero layer: archival artifact ────────────────────────── */
+  .hero {
+    position: fixed;
+    inset: 0;
+    background-image: url('hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+
+  /* Dark vignette so type sits cleanly — echoes palarchive treatment */
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at center, rgba(20, 40, 28, 0.35) 0%, rgba(20, 40, 28, 0.78) 85%),
+      linear-gradient(180deg, rgba(20, 40, 28, 0.55) 0%, rgba(20, 40, 28, 0.35) 50%, rgba(20, 40, 28, 0.7) 100%);
+  }
+
+  /* ─── Frame border — soft light outline like palarchive ────── */
+  .frame {
+    position: fixed;
+    inset: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* ─── Brand mark, top-right ────────────────────────────────── */
+  .brand {
+    position: fixed;
+    top: 36px;
+    right: 44px;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    text-align: right;
+  }
+  .brand-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+  }
+  .brand-sub {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 400;
+  }
+
+  /* ─── Centered title block ─────────────────────────────────── */
+  .stage {
+    position: relative;
+    z-index: 3;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 24px;
+    text-align: center;
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 28px;
+    font-weight: 400;
+  }
+
+  .eyebrow::before,
+  .eyebrow::after {
+    content: "—";
+    margin: 0 14px;
+    color: var(--ink-faint);
+    opacity: 0.6;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 14px;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.25);
+  }
+
+  .tagline {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 1.35rem);
+    color: var(--ink-soft);
+    max-width: 640px;
+    line-height: 1.5;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .tagline + .tagline {
+    margin-top: 4px;
+  }
+
+  /* ─── Enter link, bottom center ─────────────────────────────── */
+  .enter {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 52px;
+    z-index: 3;
+    text-align: center;
+  }
+
+  .enter a {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    color: var(--ink);
+    text-decoration: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.25rem;
+    letter-spacing: 0.04em;
+    padding: 12px 4px;
+    border-bottom: 1px solid var(--rule);
+    transition: border-color 220ms ease, color 220ms ease, transform 220ms ease;
+  }
+
+  .enter a:hover {
+    border-bottom-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .enter .sep {
+    color: var(--ink-faint);
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  /* ─── Footer meta ───────────────────────────────────────────── */
+  .meta {
+    position: fixed;
+    left: 44px;
+    bottom: 28px;
+    z-index: 3;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .meta-right {
+    position: fixed;
+    right: 44px;
+    bottom: 28px;
+    z-index: 3;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ─── Responsive ────────────────────────────────────────────── */
+  @media (max-width: 640px) {
+    .frame { inset: 10px; }
+    .brand { top: 22px; right: 24px; }
+    .brand-mark { font-size: 1.15rem; }
+    .brand-sub { font-size: 0.6rem; letter-spacing: 0.14em; }
+    .eyebrow { font-size: 0.62rem; letter-spacing: 0.18em; }
+    .enter { bottom: 96px; }
+    .enter a { font-size: 1.05rem; gap: 10px; }
+    .meta, .meta-right {
+      left: 0; right: 0; bottom: 32px;
+      text-align: center;
+      font-size: 0.6rem;
+    }
+    .meta-right { bottom: 16px; }
+  }
+
+  /* Accessibility: honor reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .enter a { transition: none; }
+  }
+</style>
+</head>
+
+<body>
+
+  <div class="hero" aria-hidden="true"></div>
+  <div class="frame" aria-hidden="true"></div>
+
+  <div class="brand">
+    <div class="brand-mark">Lietuva.AI</div>
+    <div class="brand-sub">CultureNet Pilot</div>
+  </div>
+
+  <main class="stage">
+    <div class="eyebrow">Lithuanian Cultural Memory</div>
+    <h1>Lietuva.AI</h1>
+    <p class="tagline">A living archive of Lithuanian cultural memory —</p>
+    <p class="tagline">gyvas lietuvių kultūros atminties archyvas.</p>
+  </main>
+
+  <nav class="enter" aria-label="Enter the archive">
+    <a href="https://archyvas.ziburioltmokykla.org">
+      <span>Enter the Archive</span>
+      <span class="sep">·</span>
+      <span>Įeiti į archyvą</span>
+    </a>
+  </nav>
+
+  <div class="meta">Phase I — Žiburio Archyvas</div>
+  <div class="meta-right">A CultureNet Initiative</div>
+
+</body>
+</html>
